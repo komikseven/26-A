@@ -29,6 +29,18 @@ export function Reader({ id }: { id: number }) {
     { revalidateOnFocus: false },
   )
 
+  // ── Intercept tombol back HP → arahkan ke komik-detail ───────────────────
+  useEffect(() => {
+    if (!chapter) return
+    // Tambah state ke history agar popstate terpicu saat back ditekan
+    window.history.pushState({ readerBack: true }, "")
+    const handlePopState = () => {
+      router.replace(`/detail/${chapter.id}`)
+    }
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [chapter, router])
+
   // ── 3️⃣  Save to history when chapter data is loaded ──────────────────────
   useEffect(() => {
     if (!chapter) return
