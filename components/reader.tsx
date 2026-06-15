@@ -116,7 +116,7 @@ export function Reader({ id }: { id: number }) {
       >
         <div className="bg-black/75 backdrop-blur-sm flex items-center gap-2 px-3 py-1.5">
           <Link
-            href={`/series/${chapter.categoryId}`}
+            href={`/komik/${chapter.seriesSlug}`}
             className="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
             aria-label="Kembali ke detail komik"
           >
@@ -174,7 +174,7 @@ export function Reader({ id }: { id: number }) {
             </button>
 
             <Link
-              href={`/series/${chapter.categoryId}`}
+              href={`/komik/${chapter.seriesSlug}`}
               className="flex items-center gap-1 rounded bg-secondary px-3 py-1.5 text-[12px] font-medium text-secondary-foreground transition hover:opacity-90"
             >
               <List className="h-3.5 w-3.5" />
